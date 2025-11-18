@@ -9,28 +9,6 @@ from sklearn.model_selection import StratifiedShuffleSplit
 pd.options.mode.chained_assignment = None
 
 
-def read_and_decode(filename, reshape_dims):
-    # Read an image file to a tensor as a sequence of bytes
-    image = tf.io.read_file(filename)
-    # Convert the tensor to a 3D uint8 tensor
-    image = tf.image.decode_jpeg(image, channels=IMG_CHANNELS)
-    # Convert 3D uint8 tensor with values in [0, 1]
-    image = tf.image.convert_image_dtype(image, tf.float32)
-    # Resize the image to the desired size
-    return tf.image.resize(image, reshape_dims)
-
-def show_image(filename):
-    image = read_and_decode(filename, [IMG_HEIGHT, IMG_WIDTH])
-    plt.imshow(image.numpy());
-    plt.axis('off');
-    
-def decode_csv(csv_row):
-    record_defaults = ['Id', 'Weight']
-    filename, pawpularity = tf.io.decode_csv(csv_row, record_defaults)
-    pawpularity = tf.convert_to_tensor(float(pawpularity), dtype=tf.float32)
-    image = read_and_decode(filename, [IMG_HEIGHT, IMG_WIDTH])
-    return image, pawpularity
-
 num_rows = 162
 num_cols = 2
 data = [[None] * num_cols] * num_rows  # Create a list of lists with None values
@@ -39,13 +17,11 @@ newdf = pd.DataFrame(data, columns = ['Id', 'Weight'])
 data_path = '/Users/wmeikle/Downloads/petfinder-pawpularity-score/'
 data = pd.read_csv(data_path+'train.csv')
 
-# Use stratified sampling
 sssplit = StratifiedShuffleSplit(n_splits=1, test_size=0.2)
 for train_index, test_index in sssplit.split(data, data['Pawpularity']):
     training_set = data.iloc[train_index]
     eval_set = data.iloc[test_index]
     
-# Visually check distribution of pawpularity score in training and test sets
 training_set['Pawpularity'].hist(label='Training set')
 eval_set['Pawpularity'].hist(label='Eval set')
 plt.title('Pawpularity score distribution in training and test set')
@@ -54,7 +30,6 @@ plt.ylabel('Count')
 plt.legend(loc='upper right')
 plt.show()
 
-# Export training and test sets as .csv files
 training_set['Id'] = training_set['Id'].apply(lambda x: '/Users/wmeikle/Downloads/petfinder-pawpularity-score/train/'+x+'.jpg')
 training_set[['Id', 'Pawpularity']].to_csv('training_set.csv', header=False, index=False)
 eval_set['Id'] = eval_set['Id'].apply(lambda x: '/Users/wmeikle/Downloads/petfinder-pawpularity-score/train/'+x+'.jpg')
@@ -112,10 +87,8 @@ sample_submission = tf.data.TextLineDataset(
     'sample_submission.csv'
 ).map(decode_csv).batch(BATCH_SIZE)
 
-# Make predictions with our model
 sample_prediction = model.predict(sample_submission)
 
-# Format predictions to output for submission
 submission_output = pd.concat(
     [pd.read_csv('../input/petfinder-pawpularity-score/sample_submission.csv').drop('Pawpularity', axis=1),
     pd.DataFrame(sample_prediction)],
@@ -123,5 +96,4 @@ submission_output = pd.concat(
 )
 submission_output.columns = [['Id', 'Pawpularity']]
 
-# Output submission file to csv
 submission_output.to_csv('submission.csv', index=False)
