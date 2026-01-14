@@ -30,3 +30,19 @@ plt.ylabel('Count')
 plt.legend(loc='upper right')
 plt.show()
 
+
+training_set['Id'] = training_set['Id'].apply(lambda x: '/Users/wmeikle/Downloads/petfinder-pawpularity-score/train/'+x+'.jpg')
+training_set[['Id', 'Pawpularity']].to_csv('training_set.csv', header=False, index=False)
+eval_set['Id'] = eval_set['Id'].apply(lambda x: '/Users/wmeikle/Downloads/petfinder-pawpularity-score/train/'+x+'.jpg')
+eval_set[['Id', 'Pawpularity']].to_csv('eval_set.csv', header=False, index=False)
+
+IMG_WIDTH = 256
+IMG_HEIGHT = 256
+IMG_CHANNELS = 3
+
+path = '/Users/wmeikle/Downloads/petfinder-pawpularity-score/train/'
+training_img = os.listdir(path)
+rand_idx = np.random.randint(0, len(training_img)-1)
+rand_img = training_img[rand_idx]
+
+show_image(path+rand_img)
