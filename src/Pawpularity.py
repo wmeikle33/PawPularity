@@ -15,7 +15,6 @@ rand_img = training_img[rand_idx]
 
 show_image(path+rand_img)
 
-# Build model
 model = tf.keras.Sequential([
     tf.keras.layers.Conv2D(64, (3, 3), activation='relu', input_shape=(IMG_HEIGHT, IMG_WIDTH, IMG_CHANNELS)),
     tf.keras.layers.MaxPooling2D((2, 2)),
