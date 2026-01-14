@@ -1,17 +1,4 @@
 
-sssplit = StratifiedShuffleSplit(n_splits=1, test_size=0.2)
-for train_index, test_index in sssplit.split(data, data['Pawpularity']):
-    training_set = data.iloc[train_index]
-    eval_set = data.iloc[test_index]
-    
-training_set['Pawpularity'].hist(label='Training set')
-eval_set['Pawpularity'].hist(label='Eval set')
-plt.title('Pawpularity score distribution in training and test set')
-plt.xlabel('Pawpularity score')
-plt.ylabel('Count')
-plt.legend(loc='upper right')
-plt.show()
-
 training_set['Id'] = training_set['Id'].apply(lambda x: '/Users/wmeikle/Downloads/petfinder-pawpularity-score/train/'+x+'.jpg')
 training_set[['Id', 'Pawpularity']].to_csv('training_set.csv', header=False, index=False)
 eval_set['Id'] = eval_set['Id'].apply(lambda x: '/Users/wmeikle/Downloads/petfinder-pawpularity-score/train/'+x+'.jpg')
