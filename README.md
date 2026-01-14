@@ -11,3 +11,5 @@ In this competition, you’ll analyze raw images and metadata to predict the “
 If successful, your solution will be adapted into AI tools that will guide shelters and rescuers around the world to improve the appeal of their pet profiles, automatically enhancing photo quality and recommending composition improvements. As a result, stray dogs and cats can find their "furever" homes much faster. With a little assistance from the Kaggle community, many precious lives could be saved and more happy families created.
 
 Top participants may be invited to collaborate on implementing their solutions and creatively improve global animal welfare with their AI skills.
+
+# Reproduce My Score
