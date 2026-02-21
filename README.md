@@ -12,4 +12,56 @@ If successful, your solution will be adapted into AI tools that will guide shelt
 
 Top participants may be invited to collaborate on implementing their solutions and creatively improve global animal welfare with their AI skills.
 
+```bash
+
+├── README.md
+├── pyproject.toml              # deps + tooling (preferred) or requirements.txt
+├── .gitignore
+├── .env.example                # secrets template (never commit real .env)
+├── LICENSE
+├── data/
+│   ├── raw/                    # never commit large raw data (gitignored)
+│   ├── interim/
+│   └── processed/
+├── notebooks/                  # exploration only; keep minimal
+├── src/
+│   └── my_project/
+│       ├── __init__.py
+│       ├── config.py           # dataclasses / pydantic config
+│       ├── data/
+│       │   ├── ingest.py
+│       │   ├── preprocess.py
+│       │   └── dataset.py
+│       ├── models/
+│       │   ├── model.py
+│       │   ├── train.py
+│       │   ├── eval.py
+│       │   └── predict.py
+│       ├── features/
+│       │   └── build_features.py
+│       ├── utils/
+│       │   ├── seed.py
+│       │   ├── logging.py
+│       │   └── paths.py
+│       └── cli.py              # command line entrypoint
+├── scripts/                    # small runnable scripts (optional)
+├── configs/
+│   ├── default.yaml
+│   ├── train.yaml
+│   └── eval.yaml
+├── tests/
+│   ├── test_preprocess.py
+│   ├── test_model.py
+│   └── test_train_smoke.py
+├── artifacts/                  # model outputs (gitignored)
+│   ├── checkpoints/
+│   ├── metrics/
+│   └── figures/
+├── docs/                       # notes, experiment logs, paper
+└── .github/
+    └── workflows/
+        └── ci.yml
+
+```
+
 # Reproduce My Score
