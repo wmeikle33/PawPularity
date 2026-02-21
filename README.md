@@ -12,6 +12,16 @@ If successful, your solution will be adapted into AI tools that will guide shelt
 
 Top participants may be invited to collaborate on implementing their solutions and creatively improve global animal welfare with their AI skills.
 
+# Quickstart
+
+python -m venv .venv
+source .venv/bin/activate
+pip install -e ".[dev]"
+
+myproj preprocess --config configs/default.yaml
+myproj train --config configs/train.yaml
+myproj eval --config configs/eval.yaml
+
 ```bash
 
 ├── README.md
