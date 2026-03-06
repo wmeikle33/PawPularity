@@ -14,6 +14,7 @@ Top participants may be invited to collaborate on implementing their solutions a
 
 # Quickstart
 
+```
 python -m venv .venv
 source .venv/bin/activate
 pip install -e ".[dev]"
@@ -21,6 +22,8 @@ pip install -e ".[dev]"
 myproj preprocess --config configs/default.yaml
 myproj train --config configs/train.yaml
 myproj eval --config configs/eval.yaml
+
+```
 
 ```bash
 
