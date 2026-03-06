@@ -1,3 +1,4 @@
+Path = ''
 sample_submission = pd.read_csv('/Users/wmeikle/Downloads/petfinder-pawpularity-score/sample_submission.csv')
 sample_submission['Id'] = sample_submission['Id'].apply(lambda x: '../input/petfinder-pawpularity-score/test/'+x+'.jpg')
 sample_submission.to_csv('sample_submission.csv', index=False, header=False)
