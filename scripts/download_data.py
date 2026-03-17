@@ -3,11 +3,10 @@ import zipfile
 from pathlib import Path
 
 
-DATASET = "avazu-ctr-prediction"
+DATASET = "Pawpularity"
 
 
 def download_from_kaggle(data_dir: Path):
-    """Download dataset using Kaggle CLI."""
     print("Downloading dataset from Kaggle...")
 
     subprocess.run(
@@ -25,7 +24,6 @@ def download_from_kaggle(data_dir: Path):
 
 
 def unzip_files(data_dir: Path):
-    """Extract downloaded zip files."""
     for zip_file in data_dir.glob("*.zip"):
         print(f"Extracting {zip_file.name}")
         with zipfile.ZipFile(zip_file, "r") as z:
