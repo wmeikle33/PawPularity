@@ -6,9 +6,8 @@ from ctr_prediction.model import build_pipeline, train_eval_save, load_model
 def make_small_training_df():
     return pd.DataFrame(
         {
-            "hour": [1, 2, 3, 4, 5, 6],
-            "site_id": ["a", "b", "a", "b", "c", "c"],
-            "click": [0, 1, 0, 1, 0, 1],
+            "id": [1, 2, 3, 4, 5, 6],
+            "score": ["a", "b", "a", "b", "c", "c"],
         }
     )
 
