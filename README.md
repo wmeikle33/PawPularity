@@ -27,13 +27,13 @@ myproj eval --config configs/eval.yaml
 
 ```bash
 
-Click-Through-Rate-Prediction/
+Pawpularity/
 ├── pyproject.toml
 ├── pre_commit_config.yaml
 ├── requirements.txt
 ├── requirements-dev.txt
 ├── src/
-│   └── ctr_prediction/
+│   └── pawpularity_project/
 │       ├── __init__.py
 │       ├── model.py
 │       ├── train.py
