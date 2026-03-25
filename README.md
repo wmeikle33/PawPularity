@@ -27,53 +27,23 @@ myproj eval --config configs/eval.yaml
 
 ```bash
 
-├── README.md
-├── pyproject.toml              # deps + tooling (preferred) or requirements.txt
-├── .gitignore
-├── .env.example                # secrets template (never commit real .env)
-├── LICENSE
-├── data/
-│   ├── raw/                    # never commit large raw data (gitignored)
-│   ├── interim/
-│   └── processed/
-├── notebooks/                  # exploration only; keep minimal
+Click-Through-Rate-Prediction/
+├── pyproject.toml
+├── pre_commit_config.yaml
+├── requirements.txt
+├── requirements-dev.txt
 ├── src/
-│   └── my_project/
+│   └── ctr_prediction/
 │       ├── __init__.py
-│       ├── config.py           # dataclasses / pydantic config
-│       ├── data/
-│       │   ├── ingest.py
-│       │   ├── preprocess.py
-│       │   └── dataset.py
-│       ├── models/
-│       │   ├── model.py
-│       │   ├── train.py
-│       │   ├── eval.py
-│       │   └── predict.py
-│       ├── features/
-│       │   └── build_features.py
-│       ├── utils/
-│       │   ├── seed.py
-│       │   ├── logging.py
-│       │   └── paths.py
-│       └── cli.py              # command line entrypoint
-├── scripts/                    # small runnable scripts (optional)
-├── configs/
-│   ├── default.yaml
-│   ├── train.yaml
-│   └── eval.yaml
-├── tests/
-│   ├── test_preprocess.py
-│   ├── test_model.py
-│   └── test_train_smoke.py
-├── artifacts/                  # model outputs (gitignored)
-│   ├── checkpoints/
-│   ├── metrics/
-│   └── figures/
-├── docs/                       # notes, experiment logs, paper
-└── .github/
-    └── workflows/
-        └── ci.yml
+│       ├── model.py
+│       ├── train.py
+│       ├── predict.py
+│       └── data.py
+├── scripts/
+│   ├── train.py
+│   └── predict.py
+└── tests/
+
 
 ```
 
