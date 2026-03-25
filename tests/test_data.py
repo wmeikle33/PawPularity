@@ -6,9 +6,8 @@ from pawpularity.data import load_csv, save_csv
 def test_save_and_load_csv_roundtrip(tmp_path):
     df = pd.DataFrame(
         {
-            "hour": [1, 2, 3],
-            "site_id": ["a", "b", "a"],
-            "click": [0, 1, 0],
+            "id": [1, 2, 3],
+            "score": [1, 2, 3],
         }
     )
 
