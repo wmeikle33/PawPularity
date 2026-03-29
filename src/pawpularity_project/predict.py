@@ -20,6 +20,8 @@ def main():
     model = load(args.model)
     X = load_csv(args.input)
 
+    out = model.predict(X)
+
     save_csv(out, args.output)
     print(f"Saved predictions to: {args.output}")
 
